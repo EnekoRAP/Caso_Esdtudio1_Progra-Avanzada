@@ -1,32 +1,21 @@
 using CasoPractico1_G2.Models;
 using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
+using System.Collections.Generic;
 
 namespace CasoPractico1_G2.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        public IActionResult Curso()
         {
-            _logger = logger;
-        }
+            var cursos = new List<CursoModel>
+            {
+                new CursoModel { Cod_Curso = 101, Nombre = "Progra Avanzada", Descripcion = "Curso de programación avanzada" },
+                new CursoModel { Cod_Curso = 102, Nombre = "BD NosQL", Descripcion = "Curso de base de datos no relacionales" },
+                new CursoModel { Cod_Curso = 103, Nombre = "Big Data", Descripcion = "Curso de big data" }
+            };
 
-        public IActionResult Index()
-        {
-            return View();
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View(cursos);
         }
     }
 }
