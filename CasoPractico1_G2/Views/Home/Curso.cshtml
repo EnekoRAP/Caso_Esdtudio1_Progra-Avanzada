@@ -1,4 +1,30 @@
-﻿@page
+﻿@{
+    ViewData["Title"] = "Curso";
+}
+
+<h1>@ViewData["Title"]</h1>
+
 @model CasoPractico1_G2.Views.Home.CursoModel
 @{
 }
+
+<h1>Cursos</h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Código</th>
+            <th>Nombre</th>
+            <th>Descripción</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var curso in Model)
+        {
+            <tr>
+                <td>@curso.Cod_Curso</td>
+                <td>@curso.Nombre</td>
+                <td>@curso.Descripcion</td>
+            </tr>
+        }
+    </tbody>
+</table>
