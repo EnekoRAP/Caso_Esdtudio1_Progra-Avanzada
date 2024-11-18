@@ -1,0 +1,29 @@
+﻿@model IEnumerable<CasoPractico1_G2.Models.CursoModel>
+
+@{
+    ViewData["Title"] = "Curso";
+}
+<h1>@ViewData["Title"]</h1>
+
+
+
+<h1>Cursos</h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Código</th>
+            <th>Nombre</th>
+            <th>Descripción</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var curso in Model)
+        {
+            <tr>
+                <td>@curso.Cod_Curso</td>
+                <td>@curso.Nombre</td>
+                <td>@curso.Descripcion</td>
+            </tr>
+        }
+    </tbody>
+</table>

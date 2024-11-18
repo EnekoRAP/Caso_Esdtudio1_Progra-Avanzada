@@ -12,29 +12,53 @@
     </section>
     <section class="row" aria-labelledby="aspnetTitle">
         <h3>Entidades a Gestionar</h3>
-        <table>
+        <table class="table">
             <tr>
                 <td>
-                    Curso
+                    <!-- Botón de Curso usando formulario -->
+                    <form action="@Url.Action("Index", "Curso")" method="get">
+                        <button type="submit" class="btn btn-primary btn-block">
+                            Curso
+                        </button>
+                    </form>
                 </td>
                 <td>
-                    <img src="/imgs/curso.png" width="400px" class="img-fluid mt-2">
+                    <!-- Imagen que redirige al Index del controlador Curso -->
+                    <a href="@Url.Action("Index", "Curso")">
+                        <img src="/imgs/curso.png" width="400px" class="img-fluid mt-2">
+                    </a>
                 </td>
             </tr>
             <tr>
                 <td>
-                    Estudiante
+                    <!-- Botón de Estudiante usando formulario -->
+                    <form action="@Url.Action("Index", "Estudiante")" method="get">
+                        <button type="submit" class="btn btn-primary btn-block">
+                            Estudiante
+                        </button>
+                    </form>
                 </td>
                 <td>
-                    <img src="/imgs/esdtudiante.webp" width="400px" class="img-fluid mt-2">
+                    <!-- Imagen que redirige al Index del controlador Estudiante -->
+                    <a href="@Url.Action("Index", "Estudiante")">
+                        <img src="/imgs/esdtudiante.webp" width="400px" class="img-fluid mt-2">
+                    </a>
                 </td>
             </tr>
             <tr>
                 <td>
-                    Profesor
+                    <!-- Botón de Profesor usando formulario -->
+                    <form action="@Url.Action("Index", "Profesor")" method="get">
+                        <button type="submit" class="btn btn-primary btn-block">
+                            Profesor
+                        </button>
+                    </form>
                 </td>
                 <td>
-                    <img src="/imgs/profesor.jpeg" width="400px" class="img-fluid mt-2">
+                    <!-- Imagen que redirige al Index del controlador Profesor -->
+                    <a href="@Url.Action("Index", "Profesor")">
+                        <img src="/imgs/profesor.jpeg" width="400px" class="img-fluid mt-2">
+                    </a>
                 </td>
             </tr>
         </table>
