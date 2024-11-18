@@ -5,26 +5,28 @@
 
 @model IEnumerable<CasoPractico1_G2.Models.EstudianteModel>
 
-<h1>Listado de Estudiantes</h1>
+<h1 class="text-center my-4">Listado de Estudiantes</h1>
 
-<table>
-    <thead>
-        <tr>
-            <th>Nombre</th>
-            <th>Apellido</th>
-            <th>ID</th>
-            <th>Curso Asignado</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var estudiante in Model)
-        {
-            <tr>
-                <td>@estudiante.Nombre</td>
-                <td>@estudiante.Apellido</td>
-                <td>@estudiante.NumeroIdentificacion</td>
-                <td>@estudiante.Curso?.Nombre ?? "No asignado"</td> <!-- Mostrar el nombre del curso o "No asignado" -->
+<div class="table-responsive">
+    <table class="table table-bordered table-hover table-striped">
+        <thead class="thead-dark">
+            <tr class="text-center">
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>ID</th>
+                <th>Curso Asignado</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var estudiante in Model)
+            {
+                <tr>
+                    <td>@estudiante.Nombre</td>
+                    <td>@estudiante.Apellido</td>
+                    <td>@estudiante.NumeroIdentificacion</td>
+                    <td>@estudiante.Curso?.Nombre ?? "<em class='text-muted'>No asignado</em>"</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
