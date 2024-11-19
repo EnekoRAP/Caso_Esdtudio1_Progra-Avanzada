@@ -14,6 +14,7 @@
             <th>Código</th>
             <th>Nombre</th>
             <th>Descripción</th>
+            <th>Acciones</th>
         </tr>
     </thead>
     <tbody>
@@ -23,7 +24,30 @@
                 <td>@curso.Cod_Curso</td>
                 <td>@curso.Nombre</td>
                 <td>@curso.Descripcion</td>
+                <td>
+                    <form asp-action="Eliminar" method="post" style="display:inline;">
+                        <input type="hidden" name="codCurso" value="@curso.Cod_Curso" />
+                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                    </form>
+                </td>
             </tr>
         }
     </tbody>
 </table>
+
+<h2>Agregar Curso</h2>
+<form asp-action="Crear" method="post">
+    <div class="form-group">
+        <label for="Cod_Curso">Código</label>
+        <input type="number" class="form-control" id="Cod_Curso" name="Cod_Curso" />
+    </div>
+    <div class="form-group">
+        <label for="Nombre">Nombre</label>
+        <input type="text" class="form-control" id="Nombre" name="Nombre" required />
+    </div>
+    <div class="form-group">
+        <label for="Descripcion">Descripción</label>
+        <input type="text" class="form-control id=Descripcion" name="Descripcion" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Guardar</button>
+</form>
