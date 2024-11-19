@@ -25,7 +25,7 @@
                 <td>@curso.Nombre</td>
                 <td>@curso.Descripcion</td>
                 <td>
-                    <form asp-action="Eliminar" method="post" style="display:inline;">
+                    <form asp-action="EliminarCurso" method="post" style="display:inline;">
                         <input type="hidden" name="codCurso" value="@curso.Cod_Curso" />
                         <button type="submit" class="btn btn-danger">Eliminar</button>
                     </form>
@@ -36,7 +36,7 @@
 </table>
 
 <h2>Agregar Curso</h2>
-<form asp-action="Crear" method="post">
+<form asp-action="AgregarCurso" method="post">
     <div class="form-group">
         <label for="Cod_Curso">Código</label>
         <input type="number" class="form-control" id="Cod_Curso" name="Cod_Curso" />
