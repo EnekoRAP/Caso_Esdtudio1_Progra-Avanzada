@@ -28,6 +28,7 @@ namespace CasoPractico1_G2.Controllers
             return RedirectToAction("~/Views/Home/Curso.cshtml");
         }
 
+        [HttpPost]
         public IActionResult ModificarCurso(CursoModel cursoActualizado)
         {
             var curso = cursos.FirstOrDefault(c => c.Cod_Curso == cursoActualizado.Cod_Curso);
@@ -36,6 +37,13 @@ namespace CasoPractico1_G2.Controllers
                 curso.Nombre = cursoActualizado.Nombre;
                 curso.Descripcion = cursoActualizado.Descripcion;
             }
+            return RedirectToAction("~/Views/Home/Curso.cshtml");
+        }
+
+        [HttpPost]
+        public IActionResult EliminarCurso(int codCurso)
+        {
+            cursos.RemoveAll(c => c.Cod_Curso == codCurso);
             return RedirectToAction("~/Views/Home/Curso.cshtml");
         }
     }
