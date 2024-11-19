@@ -25,7 +25,7 @@ namespace CasoPractico1_G2.Controllers
         {
             nuevoCurso.Cod_Curso = cursos.Max(c => c.Cod_Curso) + 1;
             cursos.Add(nuevoCurso);
-            return RedirectToAction("~/Views/Home/Curso.cshtml");
+            return RedirectToAction("~/Views/Home/Curso.cshtml/Eliminar");
         }
 
         public IActionResult ModificarCurso(CursoModel cursoActualizado)
@@ -36,7 +36,7 @@ namespace CasoPractico1_G2.Controllers
                 curso.Nombre = cursoActualizado.Nombre;
                 curso.Descripcion = cursoActualizado.Descripcion;
             }
-            return RedirectToAction("~/Views/Home/Curso.cshtml");
+            return RedirectToAction("~/Views/Home/Curso.cshtml/AgregarCurso");
         }
     }
 }
