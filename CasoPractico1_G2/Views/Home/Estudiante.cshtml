@@ -1,32 +1,35 @@
-﻿@{
-    ViewData["Title"] = "Estudiantes";
-}
-<h1>@ViewData["Title"]</h1>
+﻿@model IEnumerable<CasoPractico1_G2.Models.EstudianteModel>
 
-@model IEnumerable<CasoPractico1_G2.Models.EstudianteModel>
+<h1>Listado de Estudiantes</h1>
 
-<h1 class="text-center my-4">Listado de Estudiantes</h1>
-
-<div class="table-responsive">
-    <table class="table table-bordered table-hover table-striped">
-        <thead class="thead-dark">
-            <tr class="text-center">
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>ID</th>
-                <th>Curso Asignado</th>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>ID</th>
+            <th>Curso Asignado</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var estudiante in Model)
+        {
+            <tr>
+                <td>@estudiante.Nombre</td>
+                <td>@estudiante.Apellido</td>
+                <td>@estudiante.NumeroIdentificacion</td>
+                <td>@estudiante.Curso?.Nombre ?? "No asignado"</td>
+                <td>
+                    <a href="@Url.Action("EditarEstudiante", "Estudiante", new { id = estudiante.Id })" class="btn btn-warning">Editar</a>
+                    <form asp-action="EliminarEstudiante" method="post" style="display:inline;">
+                        <input type="hidden" name="id" value="@estudiante.Id" />
+                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                    </form>
+                </td>
             </tr>
-        </thead>
-        <tbody>
-            @foreach (var estudiante in Model)
-            {
-                <tr>
-                    <td>@estudiante.Nombre</td>
-                    <td>@estudiante.Apellido</td>
-                    <td>@estudiante.NumeroIdentificacion</td>
-                    <td>@estudiante.Curso?.Nombre ?? "<em class='text-muted'>No asignado</em>"</td>
-                </tr>
-            }
-        </tbody>
-    </table>
-</div>
+        }
+    </tbody>
+</table>
+
+<a href="@Url.Action("AgregarEstudiante", "Estudiante")" class="btn btn-primary">Agregar Estudiante</a>

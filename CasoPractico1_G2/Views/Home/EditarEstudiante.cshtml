@@ -1,0 +1,41 @@
+﻿@model CasoPractico1_G2.Models.EstudianteModel
+
+<h1>Editar Estudiante</h1>
+
+<form asp-action="EditarEstudiante" method="post">
+    <input type="hidden" name="Id" value="@Model.Id" />
+    
+    <div class="form-group">
+        <label for="Nombre">Nombre</label>
+        <input type="text" class="form-control" id="Nombre" name="Nombre" value="@Model.Nombre" required />
+    </div>
+
+    <div class="form-group">
+        <label for="Apellido">Apellido</label>
+        <input type="text" class="form-control" id="Apellido" name="Apellido" value="@Model.Apellido" required />
+    </div>
+
+    <div class="form-group">
+        <label for="NumeroIdentificacion">Número de Identificación</label>
+        <input type="text" class="form-control" id="NumeroIdentificacion" name="NumeroIdentificacion" value="@Model.NumeroIdentificacion" required />
+    </div>
+
+    <div class="form-group">
+        <label for="CursoId">Curso</label>
+        <select class="form-control" id="CursoId" name="CursoId" required>
+            @foreach (var curso in ViewBag.Cursos)
+            {
+                @if (Model.CursoId == curso.Cod_Curso)
+                {
+                    <option value="@curso.Cod_Curso" selected>@curso.Nombre</option>
+                }
+                else
+                {
+                    <option value="@curso.Cod_Curso">@curso.Nombre</option>
+                }
+            }
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Guardar</button>
+</form>

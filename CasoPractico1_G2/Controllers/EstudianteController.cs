@@ -1,38 +1,94 @@
 ﻿using CasoPractico1_G2.Models;
+using CasoPractico1_G2.serv;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 
 namespace CasoPractico1_G2.Controllers
 {
-
     public class EstudianteController : Controller
     {
-        // Lista de estudiantes y cursos para propósitos de ejemplo
+        private readonly ICursoService _cursoService;
+
+        // Lista de estudiantes
         private static List<EstudianteModel> estudiantes = new List<EstudianteModel>
         {
             new EstudianteModel { Id = 1, Nombre = "Juan", Apellido = "Pérez", NumeroIdentificacion = "123456", CursoId = 1 },
             new EstudianteModel { Id = 2, Nombre = "María", Apellido = "González", NumeroIdentificacion = "654321", CursoId = 2 }
         };
 
-        // Lista de cursos (solo para ejemplo)
-        private static List<CursoModel> cursos = new List<CursoModel>
+        public EstudianteController(ICursoService cursoService)
         {
-            new CursoModel { Cod_Curso = 1, Nombre = "Matemáticas", Descripcion = "Curso básico de álgebra y geometría" },
-            new CursoModel { Cod_Curso = 2, Nombre = "Ciencias", Descripcion = "Curso de física y química básica" }
-        };
-
-        public IActionResult Index()
-        {
-            return View("~/Views/Home/Estudiante.cshtml", estudiantes);  // Esto debe redirigir a la vista "Index"
+            _cursoService = cursoService;
         }
+
+        // Mostrar lista de estudiantes
         public IActionResult Estudiante()
         {
-            // Asignamos el curso correspondiente a cada estudiante
+            var cursos = _cursoService.ObtenerCursos();
+            // Asignar curso a los estudiantes
             foreach (var estudiante in estudiantes)
             {
                 estudiante.Curso = cursos.Find(c => c.Cod_Curso == estudiante.CursoId);
             }
 
+            ViewBag.Cursos = cursos; // Enviar cursos a la vista
             return View("~/Views/Home/Estudiante.cshtml", estudiantes);
+        }
+
+        // Mostrar formulario para agregar un nuevo estudiante
+        public IActionResult AgregarEstudiante()
+        {
+            var cursos = _cursoService.ObtenerCursos();
+            ViewBag.Cursos = cursos; // Enviar cursos a la vista
+            return View("~/Views/Home/AgregarEstudiante.cshtml");
+        }
+
+        [HttpPost]
+        public IActionResult AgregarEstudiante(EstudianteModel nuevoEstudiante)
+        {
+            nuevoEstudiante.Id = estudiantes.Max(e => e.Id) + 1;
+            estudiantes.Add(nuevoEstudiante);
+            return RedirectToAction("Estudiante");
+        }
+
+        // Mostrar formulario para editar un estudiante
+        public IActionResult EditarEstudiante(int id)
+        {
+            var estudiante = estudiantes.FirstOrDefault(e => e.Id == id);
+            if (estudiante == null)
+            {
+                return NotFound();
+            }
+
+            var cursos = _cursoService.ObtenerCursos();
+            ViewBag.Cursos = cursos; // Enviar cursos a la vista
+            return View("~/Views/Home/EditarEstudiante.cshtml", estudiante);
+        }
+
+        [HttpPost]
+        public IActionResult EditarEstudiante(EstudianteModel estudianteActualizado)
+        {
+            var estudiante = estudiantes.FirstOrDefault(e => e.Id == estudianteActualizado.Id);
+            if (estudiante != null)
+            {
+                estudiante.Nombre = estudianteActualizado.Nombre;
+                estudiante.Apellido = estudianteActualizado.Apellido;
+                estudiante.NumeroIdentificacion = estudianteActualizado.NumeroIdentificacion;
+                estudiante.CursoId = estudianteActualizado.CursoId;
+            }
+            return RedirectToAction("Estudiante");
+        }
+
+        // Eliminar un estudiante
+        [HttpPost]
+        public IActionResult EliminarEstudiante(int id)
+        {
+            var estudiante = estudiantes.FirstOrDefault(e => e.Id == id);
+            if (estudiante != null)
+            {
+                estudiantes.Remove(estudiante);
+            }
+            return RedirectToAction("Estudiante");
         }
     }
 }
