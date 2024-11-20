@@ -1,8 +1,8 @@
-﻿@model CasoPractico1_G2.Models.EstudianteModel
+﻿@model CasoPractico1_G2.Models.ProfesorModel
 
-<h1>Agregar Estudiante</h1>
+<h1>Agregar Profesor</h1>
 
-<form asp-action="AgregarEstudiante" method="post">
+<form asp-action="AgregarProfesor" method="post">
     <div class="form-group">
         <label for="Nombre">Nombre</label>
         <input type="text" class="form-control" id="Nombre" name="Nombre" required />
@@ -14,8 +14,8 @@
     </div>
 
     <div class="form-group">
-        <label for="NumeroIdentificacion">Número de Identificación</label>
-        <input type="text" class="form-control" id="NumeroIdentificacion" name="NumeroIdentificacion" required />
+        <label for="Email">Email</label>
+        <input type="email" class="form-control" id="Email" name="Email" required />
     </div>
 
     <div class="form-group">
@@ -23,7 +23,7 @@
         <select class="form-control" id="CursoId" name="CursoId" required>
             @foreach (var curso in ViewBag.Cursos)
             {
-                    <option value="@curso.Cod_Curso">@curso.Nombre</option>
+                <option value="@curso.Cod_Curso">@curso.Nombre</option>
             }
         </select>
     </div>

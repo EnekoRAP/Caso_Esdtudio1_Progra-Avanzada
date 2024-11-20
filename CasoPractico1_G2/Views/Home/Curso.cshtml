@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<CasoPractico1_G2.Models.CursoModel>
 
 @{
-    ViewData["Title"] = "Curso";
+    ViewData["Title"] = "Cursos";
 }
 <h1>@ViewData["Title"]</h1>
 
 <h1 class="text-center my-4">Listado de Cursos</h1>
 
-<table class="table table-striped">
+<table class="table table-bordered tabla-modulos">
     <thead>
         <tr>
             <th>Código</th>
@@ -18,12 +18,13 @@
     </thead>
     <tbody>
         @foreach (var curso in Model)
+
         {
             <tr>
                 <td>@curso.Cod_Curso</td>
                 <td>@curso.Nombre</td>
                 <td>@curso.Descripcion</td>
-                <td>
+                <td style="text-align: center;">
                     <form asp-action="EliminarCurso" method="post" style="display:inline;">
                         <input type="hidden" name="codCurso" value="@curso.Cod_Curso" />
                         <button type="submit" class="btn btn-danger">Eliminar</button>
@@ -34,20 +35,4 @@
     </tbody>
 </table>
 
-<h2>Agregar Curso</h2>
-<form asp-action="AgregarCurso" method="post">
-    <div class="form-group">
-        <label for="Cod_Curso">Código</label>
-        <input type="number" class="form-control" id="Cod_Curso" name="Cod_Curso" />
-    </div>
-    <div class="form-group">
-        <label for="Nombre">Nombre</label>
-        <input type="text" class="form-control" id="Nombre" name="Nombre" required />
-    </div>
-    <div class="form-group">
-        <label for="Descripcion">Descripción</label>
-        <input type="text" class="form-control id=Descripcion" name="Descripcion" required />
-    </div>
-    <br />
-    <button type="submit" class="btn btn-primary">Guardar</button>
-</form>
+<a href="@Url.Action("AgregarCurso", "Curso")" class="btn btn-success">Agregar Curso</a>

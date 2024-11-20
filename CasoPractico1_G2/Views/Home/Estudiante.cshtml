@@ -2,7 +2,7 @@
 
 <h1>Listado de Estudiantes</h1>
 
-<table class="table table-bordered">
+<table class="table table-bordered tabla-modulos">
     <thead>
         <tr>
             <th>Nombre</th>
@@ -19,8 +19,8 @@
                 <td>@estudiante.Nombre</td>
                 <td>@estudiante.Apellido</td>
                 <td>@estudiante.NumeroIdentificacion</td>
-                <td>@estudiante.Curso?.Nombre ?? "No asignado"</td>
-                <td>
+                <td>@estudiante.Curso?.Nombre</td>
+                <td style="text-align: center;">
                     <a href="@Url.Action("EditarEstudiante", "Estudiante", new { id = estudiante.Id })" class="btn btn-warning">Editar</a>
                     <form asp-action="EliminarEstudiante" method="post" style="display:inline;">
                         <input type="hidden" name="id" value="@estudiante.Id" />
@@ -32,4 +32,4 @@
     </tbody>
 </table>
 
-<a href="@Url.Action("AgregarEstudiante", "Estudiante")" class="btn btn-primary">Agregar Estudiante</a>
+<a href="@Url.Action("AgregarEstudiante", "Estudiante")" class="btn btn-success">Agregar Estudiante</a>

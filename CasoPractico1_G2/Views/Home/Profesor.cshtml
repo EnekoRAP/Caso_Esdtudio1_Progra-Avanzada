@@ -1,32 +1,37 @@
-﻿@{
-    ViewData["Title"] = "Profesor";
-}
-<h1>@ViewData["Title"]</h1>
-
-
+﻿
 @model IEnumerable<CasoPractico1_G2.Models.ProfesorModel>
 
 <h1>Listado de Profesores</h1>
 
-<table class="table">
+<table class="table table-bordered tabla-modulos">
     <thead>
         <tr>
             <th>Nombre</th>
             <th>Apellido</th>
             <th>Email</th>
             <th>Curso Asignado</th>
-        
+            <th>Acciones</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var profesor in Model)
+
         {
             <tr>
                 <td>@profesor.Nombre</td>
                 <td>@profesor.Apellido</td>
                 <td>@profesor.Email</td>
-                <td>@profesor.Curso?.Nombre ?? "No asignado"</td>
+                <td>@(profesor.Curso?.Nombre ?? "No asignado")</td>
+                <td style="text-align: center;">
+                    <a href="@Url.Action("EditarProfesor", "Profesor", new { id = profesor.Id })" class="btn btn-warning">Editar</a>
+                    <form asp-action="EliminarProfesor" method="post" style="display:inline;">
+                        <input type="hidden" name="id" value="@profesor.Id" />
+                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                    </form>
+                </td>
             </tr>
         }
     </tbody>
 </table>
+
+<a href="@Url.Action("AgregarProfesor", "Profesor")" class="btn btn-success">Agregar Profesor</a>

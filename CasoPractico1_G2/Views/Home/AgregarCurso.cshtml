@@ -1,0 +1,23 @@
+﻿@model CasoPractico1_G2.Models.CursoModel
+
+<h1>Agregar Nuevo Curso</h1>
+
+<form asp-action="AgregarCurso" method="post">
+    <div class="form-group">
+        <label for="Cod_Curso">Código</label>
+        <input type="number" class="form-control" id="Cod_Curso" name="Cod_Curso" required />
+    </div>
+
+    <div class="form-group">
+        <label for="Nombre">Nombre</label>
+        <input type="text" class="form-control" id="Nombre" name="Nombre" required />
+    </div>
+
+    <div class="form-group">
+        <label for="Descripcion">Descripción</label>
+        <input type="text" class="form-control" id="Descripcion" name="Descripcion" required />
+    </div>
+    <br />
+
+    <button type="submit" class="btn btn-success">Guardar</button>
+</form>

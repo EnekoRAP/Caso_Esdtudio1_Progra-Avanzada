@@ -17,6 +17,45 @@ html {
   min-height: 100%;
 }
 
+header {
+    font-weight: bold;
+}
+
+    header a {
+        font-weight: bold;
+    }
+
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    background-color: #140f99; 
+    color: white;
+}
+
+
+footer {
+    background-color: #ffbc19;
+    font-weight: bold;
+}
+
+    footer a {
+        font-weight: bold;
+    }
+
+.tabla-modulos thead {
+    background-color: #ffbc19;
+    font-weight: bold;
+}
+
+
+.tabla-modulos tbody {
+    background-color: white;
+}
+
+.tabla-modulos th {
+    text-align: center;
+}
+
+
+.tabla-modulos td {
+    text-align: left;
 }

@@ -1,10 +1,10 @@
-﻿@model CasoPractico1_G2.Models.EstudianteModel
+﻿@model CasoPractico1_G2.Models.ProfesorModel
 
-<h1>Editar Estudiante</h1>
+<h1>Editar Profesor</h1>
 
-<form asp-action="EditarEstudiante" method="post">
+<form asp-action="EditarProfesor" method="post">
     <input type="hidden" name="Id" value="@Model.Id" />
-    
+
     <div class="form-group">
         <label for="Nombre">Nombre</label>
         <input type="text" class="form-control" id="Nombre" name="Nombre" value="@Model.Nombre" required />
@@ -16,8 +16,8 @@
     </div>
 
     <div class="form-group">
-        <label for="NumeroIdentificacion">Número de Identificación</label>
-        <input type="text" class="form-control" id="NumeroIdentificacion" name="NumeroIdentificacion" value="@Model.NumeroIdentificacion" required />
+        <label for="Email">Email</label>
+        <input type="email" class="form-control" id="Email" name="Email" value="@Model.Email" required />
     </div>
 
     <div class="form-group">
