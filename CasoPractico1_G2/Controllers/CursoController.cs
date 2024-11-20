@@ -10,8 +10,8 @@ namespace CasoPractico1_G2.Controllers
         // Lista estática de cursos como ejemplo
         private static List<CursoModel> cursos = new List<CursoModel>
         {
-            new CursoModel { Cod_Curso = 1, Nombre = "Matemáticas", Descripcion = "Curso básico de álgebra y geometría" },
-            new CursoModel { Cod_Curso = 2, Nombre = "Ciencias", Descripcion = "Curso de física y química básica" },
+            new CursoModel { Cod_Curso = 1, Nombre = "Álgebra Lineal", Descripcion = "Curso básico de álgebra y geometría" },
+            new CursoModel { Cod_Curso = 2, Nombre = "Ciencias Básicas", Descripcion = "Curso de física y química básica" },
             new CursoModel { Cod_Curso = 3, Nombre = "Programación I", Descripcion = "Introducción a la programación con Java y C++" },
             new CursoModel { Cod_Curso = 4, Nombre = "Estructuras de Datos", Descripcion = "Estudio de estructuras de datos como listas, pilas, colas y árboles" },
             new CursoModel { Cod_Curso = 5, Nombre = "Sistemas Operativos", Descripcion = "Fundamentos de sistemas operativos, administración de procesos y memoria" },
