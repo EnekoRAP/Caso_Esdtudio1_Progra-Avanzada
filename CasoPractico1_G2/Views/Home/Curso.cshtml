@@ -25,6 +25,7 @@
                 <td>@curso.Nombre</td>
                 <td>@curso.Descripcion</td>
                 <td style="text-align: center;">
+                    <a asp-action="EditarCurso" asp-route-codCurso="@curso.Cod_Curso" class="btn btn-warning">Editar</a>
                     <form asp-action="EliminarCurso" method="post" style="display:inline;">
                         <input type="hidden" name="codCurso" value="@curso.Cod_Curso" />
                         <button type="submit" class="btn btn-danger">Eliminar</button>
